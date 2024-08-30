@@ -29,12 +29,6 @@ void Game::Add(GameComponent* component) {
 // should be invoked. This function should just display the words “terminating
 // game” within the console.
 void Game::Run() {
-    // use the time header file to get the current time and transform into UTC
-    // time
-    time_t rawtime;
-    tm* utcTime;
-    time(&rawtime);
-    utcTime = gmtime(&rawtime);
     int invocationNumber = 0;
 
     // invoke function address that is assigned to init pointer via setInit()
@@ -44,7 +38,13 @@ void Game::Run() {
     for (int i = 0; i < componentCount; i++) {
         cout << invocationNumber << endl;
         while (invocationNumber < 5) {
-            components[i]->Update(utcTime); // this time is always the same, need to update
+            // use the time header file to get the current time and transform
+            // into UTC time
+            time_t rawtime;
+            tm* utcTime;
+            time(&rawtime);
+            utcTime = gmtime(&rawtime);
+            components[i]->Update(utcTime);
             invocationNumber++;
             usleep(1000000);  // maybe theres a nicer way of doing this.
         }
