@@ -6,9 +6,8 @@ using namespace std;
 // Non visual entities within a game.
 class GameComponent {
 private:
+    static int instances;
     int id;
-    int instances;
-
 public:
     GameComponent();
     void Update(const tm*);

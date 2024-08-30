@@ -36,7 +36,6 @@ void Game::Run() {
     // loop over the component array and invoke the comp update function. Time
     // is passed as arg to update. invoke every second, 5 times. LOOP HERE
     for (int i = 0; i < componentCount; i++) {
-        cout << invocationNumber << endl;
         while (invocationNumber < 5) {
             // use the time header file to get the current time and transform
             // into UTC time

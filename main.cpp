@@ -15,6 +15,9 @@ void initialiseFunc() {
     cout << "Initialising game" << endl;
 }
 
+int GameComponent::instances = 0;
+
+
 int main() {
 //Implement the classes and define the two standalone functions above main.
 // Within main -

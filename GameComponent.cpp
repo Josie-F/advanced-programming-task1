@@ -10,7 +10,7 @@ using namespace std;
 // invoked.
 void GameComponent::Update(const tm* currentTime) {
     // time (+ 1 as its currently summer time)
-    cout << "ID: " << id << "Updated at: " << currentTime->tm_hour + 1 << ":"
+    cout << "ID: " << id << " Updated at: " << currentTime->tm_hour + 1 << ":"
          << currentTime->tm_min << ":" << currentTime->tm_sec << endl;
 }
 
