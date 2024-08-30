@@ -31,7 +31,8 @@ int main() {
     Game *newGame = new Game(10);
     newGame->SetInitialise(initialiseFunc);
     newGame->SetTerminate(terminateFunc);
-    newGame->Add(new GameComponent);
+    // newGame->Add(new GameComponent);
+    newGame->Add(new DrawableGameComponent(0,0));
     newGame->Run();
     return 0;
 }

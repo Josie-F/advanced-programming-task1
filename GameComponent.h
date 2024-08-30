@@ -10,5 +10,5 @@ private:
     int id;
 public:
     GameComponent();
-    void Update(const tm*);
+    virtual void Update(const tm* currentTime);
 };

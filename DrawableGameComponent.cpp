@@ -14,7 +14,7 @@ using namespace std;
 //  • x in the range 0 .. 80
 //  • y in the range 0..20
 //  x and y values should be clamped if necessary. E.g. if y = -1 set it to 0
-void DrawableGameComponent::Update(const tm *eventTime) {
+void DrawableGameComponent::Update(const tm* eventTime) {
     GameComponent::Update(eventTime);  // call base class = 1.
     switch (direction) {
         case Up:
@@ -51,17 +51,19 @@ void DrawableGameComponent::Update(const tm *eventTime) {
 
 //: Displays the current direction along with the x and y values.
 void DrawableGameComponent::Draw() {
-    cout << "Direction: " << direction << "X: " << x << "Y:" << y << endl;
+    cout << "Direction: " << GetDirectionString(&direction) << " X: " << x << " Y:" << y << endl;
 }
 
 // Assigns a new random direction to the direction data member.
 // Direction must be different to the current direction.
 
 void DrawableGameComponent::ChangeDirection() {
+    srand(time(NULL)); // needed for random to be different on invocations.
     Direction newDirection = Direction(rand() % 4);
     // make sure it doesnt choose the same direction
     if (newDirection == direction) {
         ChangeDirection();
+        return;
     }
     direction = newDirection;  // set new direction
 }
@@ -69,4 +71,21 @@ void DrawableGameComponent::ChangeDirection() {
 DrawableGameComponent::DrawableGameComponent(int x, int y) {
     x = 0;
     y = 0;
+    direction = Right;
+}
+
+const char* DrawableGameComponent::GetDirectionString(Direction *direction) {
+    switch (*direction) {
+        case Right:
+            return "Right";
+        case Left:
+            return "Left";
+        case Up:
+            return "Up";
+        case Down:
+            return "Down";
+        default:
+            return "Direction not recognised";
+    }
+    return "No case";
 }

@@ -20,4 +20,5 @@ public:
     // int const SCREEN_HEIGHT;
     // int const SCREEN_WIDTH;
     void Update(const tm* eventTime);
+    const char* GetDirectionString(Direction *direction);
 };
