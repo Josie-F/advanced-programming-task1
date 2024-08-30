@@ -47,6 +47,7 @@ void DrawableGameComponent::Update(const tm* eventTime) {
     }
     Draw();             // 3
     ChangeDirection();  // 4
+    count++;
 }
 
 //: Displays the current direction along with the x and y values.
@@ -72,6 +73,7 @@ DrawableGameComponent::DrawableGameComponent(int x, int y) {
     x = 0;
     y = 0;
     direction = Right;
+    count = 0;
 }
 
 const char* DrawableGameComponent::GetDirectionString(Direction *direction) {

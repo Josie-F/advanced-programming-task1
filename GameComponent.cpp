@@ -12,6 +12,7 @@ void GameComponent::Update(const tm* currentTime) {
     // time (+ 1 as its currently summer time)
     cout << "ID: " << id << " Updated at: " << currentTime->tm_hour + 1 << ":"
          << currentTime->tm_min << ":" << currentTime->tm_sec << endl;
+        count++;
 }
 
 // Each entity has a unique ID number. This ID is generated automatically using
@@ -21,4 +22,5 @@ void GameComponent::Update(const tm* currentTime) {
 GameComponent::GameComponent() {
     instances++;
     id = instances;
+    count = 0;
 }
