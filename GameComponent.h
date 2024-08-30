@@ -3,6 +3,7 @@
 using namespace std;
 
 #pragma once
+// Non visual entities within a game.
 class GameComponent {
 private:
     int id;
