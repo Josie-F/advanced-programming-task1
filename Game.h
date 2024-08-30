@@ -7,12 +7,17 @@ using namespace std;
 #pragma once
 class Game {
 private:
+    // Number components in array
     int componentCount;
     GameComponent** components;
-    typedef void(*FP);
+    // is a typedef representing a type of function that returns void and has no
+    // parameters.
+    typedef void(*FP)();
+    // Pointer to standalone function
     FP initialise;
+    // Pointer to standalone function.
     FP terminate;
-    int const TICKS_1000MS;
+    // int const TICKS_1000MS; // when to init this?
 
 public:
     void Add(GameComponent*);

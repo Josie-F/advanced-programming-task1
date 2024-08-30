@@ -8,15 +8,10 @@ using namespace std;
 
 // Display the objects id and time at which the Update member function was
 // invoked.
-void GameComponent::Update(const tm*) {
-    // use the time header file to get the current time and transform into UTC
+void GameComponent::Update(const tm* currentTime) {
     // time (+ 1 as its currently summer time)
-    time_t rawtime;
-    tm* utcTime;
-    time(&rawtime);
-    utcTime = gmtime(&rawtime);
-    cout << "ID: " << id << "Updated at: " << utcTime->tm_hour + 1 << ":"
-         << utcTime->tm_min << ":" << utcTime->tm_sec << endl;
+    cout << "ID: " << id << "Updated at: " << currentTime->tm_hour + 1 << ":"
+         << currentTime->tm_min << ":" << currentTime->tm_sec << endl;
 }
 
 // Each entity has a unique ID number. This ID is generated automatically using
