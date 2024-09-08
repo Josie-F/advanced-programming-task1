@@ -10,14 +10,15 @@ private:
     // Number components in array
     int componentCount;
     GameComponent** components;
-    // is a typedef representing a type of function that returns void and has no
-    // parameters.
+    // typedef representing a type of function that returns void and has no
+    // parameters used for initialise and terminate.
     typedef void(*FP)();
     // Pointer to standalone function
     FP initialise;
     // Pointer to standalone function.
     FP terminate;
-    // int const TICKS_1000MS; // when to init this?
+    // const used for the sleep functionality to wait a second.
+    int const TICKS_1000MS = 1000000; // this is in microseconds - needed for MAC's usleep()
 
 public:
     void Add(GameComponent*);

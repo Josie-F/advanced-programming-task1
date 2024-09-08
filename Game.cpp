@@ -7,8 +7,7 @@
 
 using namespace std;
 
-// adds a new (GameComponent/DrawableGameComponent) object to an array of
-// pointers of type GameComponent (components).
+// Function to add a new (GameComponent/DrawableGameComponent) object to the components array.
 void Game::Add(GameComponent* component) {
     components[componentCount] = component;
     componentCount++;
@@ -18,23 +17,14 @@ void Game::Add(GameComponent* component) {
     // }
 }
 
-// : Invokes the functions whose address has been assigned (using SetInitialise)
-// to the Initialise pointer . This standalone function should just display the
-// words “Initialising game” within the console. Run implements a loop which
-// iterates through the components array invoking the component’s Update member
-// functions. The time of invocation is passed as an argument to the Update
-// member function. The component’s Update member function should be invoked
-// once every second. But should only execute 5 times. Finally the function
-// whose address has been assigned (using SetTerminate) to the terminate pointer
-// should be invoked. This function should just display the words “terminating
-// game” within the console.
+// Function to run the game. It calls initialise and then loops over the component array, running the update function every second, 5 times.
+// It then terminates the game.
 void Game::Run() {
     int invocationNumber = 0;
 
-    // invoke function address that is assigned to init pointer via setInit()
+    // invoke function address assigned to init pointer via setInit()
     initialise();
-    // loop over the component array and invoke the comp update function. Time
-    // is passed as arg to update. invoke every second, 5 times. LOOP HERE
+    // loop over components array and invoke the component update function.
     for (int i = 0; i < componentCount; i++) {
         while (components[i]->count < 5) { // invocation needs to move because it is not happening simultaneously
             // use the time header file to get the current time and transform
@@ -45,24 +35,24 @@ void Game::Run() {
             utcTime = gmtime(&rawtime);
             components[i]->Update(utcTime);
             invocationNumber++;
-            usleep(1000000);  // maybe theres a nicer way of doing this.
+            usleep(TICKS_1000MS);
         }
     }
-    //  invoke function address that is assigned to terminate pointer via
-    //  setTerm()
+    //  invoke function address that is assigned to terminate pointer via setTerm()
     terminate();
 }
 
-// assigns the address of a standalone function to the Initialise data member.
+// Function that assigns the address of a standalone function to the initialise data member.
 void Game::SetInitialise(FP init) {
     initialise = init;
 }
 
-// assigns the address of a standalone function to the terminate data member
+// Function that assigns the address of a standalone function to the terminate data member
 void Game::SetTerminate(FP term) {
     terminate = term;
 }
 
+// Constructor for Game class
 Game::Game(int maxComponents) {
     componentCount = 0;
     // array of pointers of type GameComponent

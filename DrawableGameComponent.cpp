@@ -4,16 +4,9 @@
 
 using namespace std;
 
-// Update:
-//  1. Displays the object’s id and time of invocation.
-//  2. Increments / decrements the x or y values depending upon the current
-//  direction (Up, Down, Left, Right) .
-//  3. Invokes the Draw() member function
-//  4. Invokes the ChangeDirection member function.
-//  Note: The x & y values should not exceed the screen size. Valid values are
-//  • x in the range 0 .. 80
-//  • y in the range 0..20
-//  x and y values should be clamped if necessary. E.g. if y = -1 set it to 0
+// Update function which shows id and time of invocation. It then increments/decrement x and y depending on the current direction.
+// Draw is called to show the current direction and coordinates and the direction is then changed.
+// x and y are clamped to specific ranges.
 void DrawableGameComponent::Update(const tm* eventTime) {
     GameComponent::Update(eventTime);  // call base class = 1.
     switch (direction) {
@@ -50,12 +43,12 @@ void DrawableGameComponent::Update(const tm* eventTime) {
     count++;
 }
 
-//: Displays the current direction along with the x and y values.
+// Function which displays current direction along with x and y values.
 void DrawableGameComponent::Draw() {
     cout << "Direction: " << GetDirectionString(&direction) << " X: " << x << " Y:" << y << endl;
 }
 
-// Assigns a new random direction to the direction data member.
+// Function which assigns a new random direction.
 // Direction must be different to the current direction.
 
 void DrawableGameComponent::ChangeDirection() {
@@ -69,6 +62,7 @@ void DrawableGameComponent::ChangeDirection() {
     direction = newDirection;  // set new direction
 }
 
+// Constructor for the DrawableGameComponent
 DrawableGameComponent::DrawableGameComponent(int x, int y) {
     x = 0;
     y = 0;
@@ -76,6 +70,7 @@ DrawableGameComponent::DrawableGameComponent(int x, int y) {
     count = 0;
 }
 
+// Helper function to get current direction in its string form. 
 const char* DrawableGameComponent::GetDirectionString(Direction *direction) {
     switch (*direction) {
         case Right:
