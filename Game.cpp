@@ -7,18 +7,23 @@
 
 using namespace std;
 
-// Function to add a new (GameComponent/DrawableGameComponent) object to the components array.
+// Function to add a new (GameComponent/DrawableGameComponent) object to the
+// components array.
 void Game::Add(GameComponent* component) {
-    components[componentCount] = component;
-    componentCount++;
-    // check that we are not over the max components
-    //  if (componentCount < components.size()) {
-    // } else {
-    // }
+    // check that we are not over arrays size
+    if (componentCount < componentsSize) {  // get component count and check if
+                                           // it's less than the array allows.
+        components[componentCount] = component;
+        componentCount++;
+    } else {
+        cout << "You've added the max amount of components - continuing "
+                "without insertion of component \n";
+    }
 }
 
-// Function to run the game. It calls initialise and then loops over the component array, running the update function every second, 5 times.
-// It then terminates the game.
+// Function to run the game. It calls initialise and then loops over the
+// component array, running the update function every second, 5 times. It then
+// terminates the game.
 void Game::Run() {
     int invocationNumber = 0;
 
@@ -26,7 +31,9 @@ void Game::Run() {
     initialise();
     // loop over components array and invoke the component update function.
     for (int i = 0; i < componentCount; i++) {
-        while (components[i]->count < 5) { // invocation needs to move because it is not happening simultaneously
+        while (components[i]->count <
+               5) {  // this loop does not execute simultaneously like the brief
+                     // outcome shows. ID 1 will finish and then ID 2 will run.
             // use the time header file to get the current time and transform
             // into UTC time
             time_t rawtime;
@@ -38,16 +45,19 @@ void Game::Run() {
             usleep(TICKS_1000MS);
         }
     }
-    //  invoke function address that is assigned to terminate pointer via setTerm()
+    //  invoke function address that is assigned to terminate pointer via
+    //  setTerm()
     terminate();
 }
 
-// Function that assigns the address of a standalone function to the initialise data member.
+// Function that assigns the address of a standalone function to the initialise
+// data member.
 void Game::SetInitialise(FP init) {
     initialise = init;
 }
 
-// Function that assigns the address of a standalone function to the terminate data member
+// Function that assigns the address of a standalone function to the terminate
+// data member
 void Game::SetTerminate(FP term) {
     terminate = term;
 }
@@ -55,6 +65,7 @@ void Game::SetTerminate(FP term) {
 // Constructor for Game class
 Game::Game(int maxComponents) {
     componentCount = 0;
+    componentsSize = maxComponents;  // assign param to data member.
     // array of pointers of type GameComponent
     components = new GameComponent*[maxComponents];
 }

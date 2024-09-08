@@ -9,16 +9,19 @@ class Game {
 private:
     // Number components in array
     int componentCount;
+    int componentsSize;  // added this to keep track of max components set for
+                         // the array so you can't add more than the max.
     GameComponent** components;
     // typedef representing a type of function that returns void and has no
     // parameters used for initialise and terminate.
-    typedef void(*FP)();
+    typedef void (*FP)();
     // Pointer to standalone function
     FP initialise;
     // Pointer to standalone function.
     FP terminate;
     // const used for the sleep functionality to wait a second.
-    int const TICKS_1000MS = 1000000; // this is in microseconds - needed for MAC's usleep()
+    int const TICKS_1000MS =
+        1000000;  // this is in microseconds - needed for MAC's usleep()
 
 public:
     void Add(GameComponent*);

@@ -8,12 +8,12 @@ using namespace std;
 // Draw is called to show the current direction and coordinates and the direction is then changed.
 // x and y are clamped to specific ranges.
 void DrawableGameComponent::Update(const tm* eventTime) {
-    GameComponent::Update(eventTime);  // call base class = 1.
+    GameComponent::Update(eventTime); 
     switch (direction) {
         case Up:
             y++;
             if (y == 21) {
-                y = 20;  // clamp the y to the edge of screen. range is 0..20
+                y = SCREEN_HEIGHT;  // clamp the y to the edge of screen. range is 0..20
             }
             break;
         case Down:
@@ -31,15 +31,15 @@ void DrawableGameComponent::Update(const tm* eventTime) {
         case Right:
             x++;
             if (x == 81) {
-                x = 80;  // clamp the x to the edge of screen. range is 0..80
+                x = SCREEN_WIDTH;  // clamp the x to the edge of screen. range is 0..80
             }
             break;
 
         default:
             break;
     }
-    Draw();             // 3
-    ChangeDirection();  // 4
+    Draw();       
+    ChangeDirection(); 
     count++;
 }
 
