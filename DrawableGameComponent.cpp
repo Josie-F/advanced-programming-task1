@@ -73,7 +73,7 @@ DrawableGameComponent::DrawableGameComponent() {
     direction = Right;
 }
 
-// Helper function to get current direction in its string form. 
+// Helper function to get current direction in its string form. Not mentioned in brief. 
 const char* DrawableGameComponent::GetDirectionString(Direction *direction) {
     switch (*direction) {
         case Right:
