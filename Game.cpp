@@ -25,13 +25,12 @@ void Game::Add(GameComponent* component) {
 // component array, running the update function every second, 5 times. It then
 // terminates the game.
 void Game::Run() {
-    int invocationNumber = 0;
-
     // invoke function address assigned to init pointer via setInit()
     initialise();
     // loop over components array and invoke the component update function.
     for (int i = 0; i < componentCount; i++) {
-        while (components[i]->count <
+        int counter = 0;
+        while (counter <
                5) {  // this loop does not execute simultaneously like the brief
                      // outcome shows. ID 1 will finish and then ID 2 will run.
             // use the time header file to get the current time and transform
@@ -41,8 +40,8 @@ void Game::Run() {
             time(&rawtime);
             utcTime = gmtime(&rawtime);
             components[i]->Update(utcTime);
-            invocationNumber++;
             usleep(TICKS_1000MS);
+            counter++;
         }
     }
     //  invoke function address that is assigned to terminate pointer via

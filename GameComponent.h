@@ -10,6 +10,5 @@ private:
     int id;
 public:
     GameComponent();
-    int count;
     virtual void Update(const tm* currentTime); // virtual as it will be overridden in child classes.
 };

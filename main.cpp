@@ -3,7 +3,6 @@
 #include "DrawableGameComponent.h"
 #include "Game.h"
 #include "GameComponent.h"
-#include "time.h"
 
 using namespace std;
 

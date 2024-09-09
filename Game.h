@@ -20,7 +20,7 @@ private:
     // Pointer to standalone function.
     FP terminate;
     // const used for the sleep functionality to wait a second.
-    int const TICKS_1000MS =
+    const int TICKS_1000MS =
         1000000;  // this is in microseconds - needed for MAC's usleep()
 
 public:

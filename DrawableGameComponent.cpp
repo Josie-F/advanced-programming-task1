@@ -40,7 +40,6 @@ void DrawableGameComponent::Update(const tm* eventTime) {
     }
     Draw();       
     ChangeDirection(); 
-    count++;
 }
 
 // Function which displays current direction along with x and y values.
@@ -57,17 +56,21 @@ void DrawableGameComponent::ChangeDirection() {
     // make sure it doesnt choose the same direction
     if (newDirection == direction) {
         ChangeDirection();
-        return;
     }
     direction = newDirection;  // set new direction
 }
 
 // Constructor for the DrawableGameComponent
 DrawableGameComponent::DrawableGameComponent(int x, int y) {
-    x = 0;
+    this->x = x; // brief mentions this should be set to 0, however I am using the parameter. 
+    this->y = y;
+    direction = Right;
+}
+
+DrawableGameComponent::DrawableGameComponent() {
+    x = 0; // created a constructor which doesnt take in x and y values and sets the values to 0. 
     y = 0;
     direction = Right;
-    count = 0;
 }
 
 // Helper function to get current direction in its string form. 

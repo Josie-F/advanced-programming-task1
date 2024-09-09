@@ -12,7 +12,6 @@ void GameComponent::Update(const tm* currentTime) {
     // time (+ 1 as its currently summer time)
     cout << "ID: " << id << " Updated at: " << currentTime->tm_hour + 1 << ":"
          << currentTime->tm_min << ":" << currentTime->tm_sec << endl;
-    count++;
 }
 
 // Constructor for game component. Instances will be kept in memory and a new
@@ -22,5 +21,4 @@ void GameComponent::Update(const tm* currentTime) {
 GameComponent::GameComponent() {
     instances++;
     id = instances;
-    count = 0;
 }

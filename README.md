@@ -3,7 +3,7 @@ This is task 1 within the CW1 Individual Project for the Advanced Programming mo
 ## To run the game:
 
 1. cd into build
-2. run `./task1`
+2. run `./gameEngine`
 
 
 ## To build the game:
